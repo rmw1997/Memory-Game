@@ -107,6 +107,11 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
 #time{
     margin-left: 50px;
+}
+
+.disable {
+    pointer-events: none;
 }

@@ -81,7 +81,7 @@ function shuffle(array) {
 
 //function to perform action when the card is clicked
 function OpenedCard(){
-    //for eack click, increament the move counter
+    //for each click, increament the move counter
     moveCounter();
 
     //to prevent the clicking of more than 2 cards 
@@ -89,12 +89,13 @@ function OpenedCard(){
     //if it's a first click
     if(!firstClick){
         card1=this;
-        card1.classList.add('open','show');
+        card1.classList.add('open','show','disable');
         OpenCards.push(card1);
         firstClick=true;
     }
     //if it's a second click
     else{
+        card1.classList.remove('disable');
         card2=this;
         card2.classList.add('open','show');
         OpenCards.push(card2);
@@ -107,22 +108,13 @@ function OpenedCard(){
 
 //function to check the matched open cards
 function checkMatching(){
-
     //if they match
     if(card1.innerHTML === card2.innerHTML){
-        //to check if the user press the same card or not
-        if(OpenCards.indexOf(card1)===OpenCards.indexOf(card2)){
-            card1.classList.remove('open','show'); 
-            card2.classList.remove('open','show'); 
-        }
-        //if the user press distinct cards that have the same icon
-        else{
             card1.classList.add('match');
             card2.classList.add('match');
             matchedCards.push(card1);
             matchedCards.push(card2);
-            completeGame();
-        }
+            completeGame();  
     }
     //if they don't match
     else{
